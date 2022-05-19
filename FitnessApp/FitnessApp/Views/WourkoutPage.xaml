@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FitnessApp.Views.WourkoutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:FitnessApp.Helpers"
+    xmlns:viewmodel="clr-namespace:FitnessApp.ViewModels"
+    Title="{Binding Title}"
+    Shell.NavBarIsVisible="True">
+
+    <ContentPage.BindingContext>
+        <viewmodel:WorkoutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <viewmodel:WorkoutViewModel x:Key="WorkoutVM" />
+    </ContentPage.Resources>
+
+    <Grid Padding="0,10" RowDefinitions="*, Auto">
+        <CarouselView
+            Grid.Row="0"
+            CurrentItemChangedCommand="{Binding CarouselItemChangedCommand}"
+            CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
+            IndicatorView="myIndicator"
+            ItemsSource="{Binding oExercisesToDo}"
+            Loop="False"
+            PeekAreaInsets="10">
+            <CarouselView.Resources />
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout
+                    ItemSpacing="0"
+                    Orientation="Horizontal"
+                    SnapPointsType="MandatorySingle" />
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame
+                            Margin="0"
+                            BorderColor="DarkGray"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            HeightRequest="500"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand">
+                            <Grid RowDefinitions="5*, *, .6*, .5*, *">
+                                <BoxView
+                                    Grid.Row="0"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="150"
+                                    HorizontalOptions="Center"
+                                    WidthRequest="300" />
+                                <ImageButton
+                                    Grid.Row="0"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=ImagePressedCommand}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="150"
+                                    Source="{Binding Exercise.ExerciseImage}"
+                                    WidthRequest="300" />
+                                <Label
+                                    Grid.Row="1"
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Exercise.Name}" />
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.RowSpan="2"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    Grid.Row="2"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=Countdown}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="3"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="Seconds"
+                                    VerticalOptions="Center" />
+                                <Button
+                                    Grid.Row="4"
+                                    BackgroundColor="Gray"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=ButtonPressedCommand}"
+                                    CommandParameter="{Binding .}"
+                                    FontFamily="FASolid"
+                                    FontSize="Large"
+                                    Text="{x:Static helpers:FAIcons.Play}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView
+            x:Name="myIndicator"
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            IndicatorColor="LightGray"
+            SelectedIndicatorColor="DarkGray" />
+    </Grid>
+</ContentPage>

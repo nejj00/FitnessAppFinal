@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FitnessApp.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:helpers="clr-namespace:FitnessApp.Helpers"
+    xmlns:images="clr-namespace:FitnessApp"
+    xmlns:local="clr-namespace:FitnessApp.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{StaticResource Background}"
+    mc:Ignorable="d">
+
+    <ContentPage.BindingContext>
+        <local:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid
+        Margin="20,20"
+        ColumnDefinitions="*, *, *"
+        RowDefinitions="2*, *, *">
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="90,80"
+            FontSize="Large"
+            Text="Ab Trainer 3000" />
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Scale="1"
+            Source="BruceDragonFlag" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="0,20"
+            BackgroundColor="{StaticResource TabIconUnselected}"
+            Command="{Binding GoToProgramPageCommand}"
+            CornerRadius="40"
+            FontFamily="FASolid"
+            FontSize="40"
+            Text="{x:Static helpers:FAIcons.Trophy}"
+            TextColor="Azure" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,20"
+            BackgroundColor="{StaticResource TabIconUnselected}"
+            Command="{Binding GoToMorePageCommand}"
+            CornerRadius="40"
+            FontFamily="FASolid"
+            FontSize="40"
+            Text="{x:Static helpers:FAIcons.GripLines}"
+            TextColor="Azure" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="0,20"
+            BackgroundColor="{StaticResource TabIconUnselected}"
+            Command="{Binding GoToShufflePageCommand}"
+            CornerRadius="40"
+            FontFamily="FASolid"
+            FontSize="40"
+            Text="{x:Static helpers:FAIcons.CirclePlay}"
+            TextColor="Azure" />
+
+    </Grid>
+
+    <!--<Grid RowDefinitions="Auto, 240">
+        <Label
+            Margin="16,10,0,0"
+            FontSize="Medium"
+            Text="Live and Upcoming"
+            TextColor="{StaticResource TextPrimary}" />
+        <CollectionView
+            Grid.Row="1"
+            ItemsLayout="HorizontalList"
+            VerticalOptions="Start">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item One</x:String>
+                    <x:String>Item Two</x:String>
+                    <x:String>Item Three</x:String>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="16,0,0,0">
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="{StaticResource CardBackground}"
+                            CornerRadius="8"
+                            HasShadow="True"
+                            WidthRequest="320">
+                            <Grid RowDefinitions="170, Auto, Auto">
+                                <BoxView BackgroundColor="Black" />
+                                <Label
+                                    Grid.Row="1"
+                                    Margin="16,4,0,0"
+                                    FontSize="Small"
+                                    Text="PROGRAM - 4 WEEKS"
+                                    TextColor="{StaticResource TextPrimary}" />
+                                <Label
+                                    Grid.Row="2"
+                                    Margin="16,0,0,6"
+                                    FontSize="Medium"
+                                    Text="Strength"
+                                    TextColor="{StaticResource TextPrimary}" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>-->
+</ContentPage>

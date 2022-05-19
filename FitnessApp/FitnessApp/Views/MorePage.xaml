@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FitnessApp.Views.MorePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:FitnessApp.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MoreViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Margin="20" RowDefinitions="*, *, *">
+        <Button
+            Grid.Row="0"
+            Command="{Binding OpenExerciseListCommand}"
+            FontSize="Large"
+            Text="Exercise List" />
+        <Button
+            Grid.Row="1"
+            FontSize="Large"
+            Text="Learn More" />
+    </Grid>
+
+    <!--<ContentPage.Content>
+        <StackLayout>
+            <xct:MediaElement
+                x:Name="videoElement"
+                Aspect="Fill"
+                AutoPlay="True"
+                ShowsPlaybackControls="True"
+                Source="https://sec.ch9.ms/ch9/5d93/a1eab4bf-3288-4faf-81c4-294402a85d93/XamarinShow_mid.mp4" />
+        </StackLayout>
+    </ContentPage.Content>-->
+</ContentPage>

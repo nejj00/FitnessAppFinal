@@ -3,3 +3,9 @@
 ################################################################################
 
 /FitnessApp/FitnessApp.Android/bin/Debug
+/FitnessApp/FitnessApp.Android/obj
+/FitnessApp/FitnessApp.iOS/bin/iPhone/Debug
+/FitnessApp/FitnessApp.iOS/obj
+/FitnessApp/FitnessApp/obj
+/FitnessApp/FitnessApp/bin/Debug/netstandard2.0
+/FitnessApp/FitnessApp.Android/FitnessApp.Android.csproj.user
